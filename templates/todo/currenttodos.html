@@ -1,0 +1,21 @@
+{% extends 'todo/base.html' %}
+
+{% block content %}
+<h1>Задачи</h1>
+    <ul class="tasks">
+        {% for todo in todos %}
+        <li>
+            <a href="{% url 'viewtodo' todo.id %}">
+                {% if todo.important %}
+                <b>{{ todo.title }}</b>
+                {% else %}
+                {{ todo.title }}
+                {% endif %}
+            </a>
+            {% if todo.description %}
+                - {{ todo.description }}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
